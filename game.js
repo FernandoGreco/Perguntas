@@ -1,7 +1,8 @@
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('choice-text'));
-const questionCounterText = document.getElementById('questionCounter');
+const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
+const progressBarFull = document.getElementById('progressBarFull');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -50,14 +51,19 @@ startGame = () =>{
 
 getNewQuestion = ( ) => {
 
-  //  if(!availableQuestions.length == 0 || questionCounter > MAX_QUESTIONS){
+    if(questionCounter == MAX_QUESTIONS){
         //quando for feita todas perguntas, ou seja questitons igual a 0, vai para o final da página
-     //   return window.location.assign('/end.html');
+        return window.location.assign('/end.html');
 
- //   }
+   }
 
     questionCounter++;
-    questionCounterText.innerHTML = questionCounter + "/" + MAX_QUESTIONS;
+    progressText.innerHTML = 'Question'+questionCounter + "/" + MAX_QUESTIONS;
+
+    let largura = (questionCounter / MAX_QUESTIONS) *100;
+    //aqui altera o progress bar, calcula o espaço de acordo com a quantidade de questões
+    progressBarFull.style.width = largura + '%';
+    
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
