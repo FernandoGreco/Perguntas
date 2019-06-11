@@ -52,9 +52,10 @@ startGame = () =>{
 getNewQuestion = ( ) => {
 
     if(questionCounter == MAX_QUESTIONS){
-        //quando for feita todas perguntas, ou seja questitons igual a 0, vai para o final da página
-        return window.location.assign('/end.html');
 
+        localStorage.setItem("mostRecentScore",score);
+        //quando for feita todas perguntas, ou seja questitons igual a 0, vai para o final da página
+      return window.location.assign('end.html');
    }
 
     questionCounter++;
