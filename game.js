@@ -54,7 +54,7 @@ getNewQuestion = ( ) => {
     if(questionCounter == MAX_QUESTIONS){
 
         localStorage.setItem("mostRecentScore",score);
-        //quando for feita todas perguntas, ou seja questitons igual a 0, vai para o final da página
+        //quando for feita todas perguntas, ou seja questions igual a 0, vai para o final da página
       return window.location.assign('end.html');
    }
 
