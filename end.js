@@ -10,7 +10,7 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || [ ];
 //maximo de usuarios que será salvo ao clicar no botão save
 const MAX_HIGH_SCORES = 5;
 
-console.log(highScores);
+//console.log(highScores);
 
 finalScore.innerText = mostRecentScore;
 
@@ -38,6 +38,6 @@ saveHighScore = (e) =>{
     
     window.location.assign("index.html");
 
-    console.log(highScores);
+  //  console.log(highScores);
     
 };
