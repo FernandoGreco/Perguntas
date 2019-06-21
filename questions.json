@@ -1,0 +1,27 @@
+[ 
+
+    {
+     "question": "Qual forma correta de inserir JavasScript no HTML?",
+     "choice1": "<script>",
+     "choice2": "<javascript>",
+     "choice3": "<js>",
+     "choice4": "<scripting>",
+     "ansewr":1
+ },
+    {
+    "question": "Qual a sintaxe corrreta para referenciar um script externo chamado 'xxx.js'",
+        "choice1": "<script href='xxx.js>",
+        "choice2": "<script name='xxx.js'>",
+        "choice3": "<script src='xxx.js'>",
+        "choice4": "<script file='xxx.js'>",
+        "ansewr":3
+    },
+    {
+     "question": "Como escrever 'Ola mundo' em um box de alerta?",
+         "choice1": "msgBox('Ola mundo')",
+         "choice2": "alertBox('Ola mundo')",
+         "choice3": "msg('Ola mundo')",
+         "choice4": "alert('Ola mundo')",
+         "ansewr":4
+     }
+]

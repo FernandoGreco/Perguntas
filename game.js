@@ -10,33 +10,19 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [ 
+let questions = [];
 
-       {
-        question: "Qual forma correta de inserir JavasScript no HTML?",
-        choice1: "<script>",
-        choice2: "<javascript>",
-        choice3: "<js>",
-        choice4: "<scripting>",
-        ansewr:1
-    },
-    {
-    question: "Qual a sintaxe corrreta para referenciar um script externo chamado 'xxx.js'",
-        choice1: "<script href='xxx.js>",
-        choice2: "<script name='xxx.js'>",
-        choice3: "<script src='xxx.js'>",
-        choice4: "<script file='xxx.js'>",
-        ansewr:3
-    },
-    {
-        question: "Como escrever 'Ola mundo' em um box de alerta?",
-            choice1: "msgBox('Ola mundo')",
-            choice2: "alertBox('Ola mundo')",
-            choice3: "msg('Ola mundo')",
-            choice4: "alert('Ola mundo')",
-            ansewr:4
-        },
-]
+fetch("questions.json")
+.then(res =>{
+    return res.json();
+}).then(loadedQuestions =>{
+    console.log(loadedQuestions);
+ questions = loadedQuestions;
+    startGame();
+})
+.catch( err=>{
+ console.err(err);
+});
 
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
@@ -59,7 +45,7 @@ getNewQuestion = ( ) => {
    }
 
     questionCounter++;
-    progressText.innerHTML = 'Question'+questionCounter + "/" + MAX_QUESTIONS;
+    progressText.innerHTML = 'Question ${questionCounter}/${MAX_QUESTIONS}';
 
     let largura = (questionCounter / MAX_QUESTIONS) *100;
     //aqui altera o progress bar, calcula o espaço de acordo com a quantidade de questões
@@ -106,5 +92,3 @@ getNewQuestion = ( ) => {
 
         });
     });
-
-startGame();
