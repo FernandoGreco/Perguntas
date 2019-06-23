@@ -17,7 +17,7 @@ fetch("questions.json")
     return res.json();
 }).then(loadedQuestions =>{
     console.log(loadedQuestions);
- questions = loadedQuestions;
+    questions = loadedQuestions;
     startGame();
 })
 .catch( err=>{
