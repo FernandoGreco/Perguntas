@@ -53,7 +53,7 @@ startGame = () =>{
     availableQuestions = [...questions];
     getNewQuestion();
 
-       //por algum motivo o loader só esta funcionando no começo
+    
        game.classList.remove("hidden");
        loader.classList.add("hidden");
   
