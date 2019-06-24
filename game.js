@@ -3,6 +3,8 @@ const choices = Array.from(document.getElementsByClassName('choice-text'));
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
+const loader = document.getElementById("loader");
+const game = document.getElementById("game");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -15,6 +17,7 @@ let questions = [];
 fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple")
 .then(res =>{
     return res.json();
+     
 })
 .then(loadedQuestions =>{
     console.log(loadedQuestions.results);
@@ -34,7 +37,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=mul
 
         return formatedQuestion;
     });
-
+  
        startGame();
 })
 .catch( err=>{
@@ -48,11 +51,16 @@ startGame = () =>{
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    console.log(availableQuestions);
     getNewQuestion();
+
+       //por algum motivo o loader só esta funcionando no começo
+       game.classList.remove("hidden");
+       loader.classList.add("hidden");
+  
     };
 
 getNewQuestion = ( ) => {
+    
 
     if(questionCounter == MAX_QUESTIONS){
 
@@ -62,7 +70,7 @@ getNewQuestion = ( ) => {
    }
 
     questionCounter++;
-    progressText.innerHTML = 'Question ${questionCounter}/${MAX_QUESTIONS}';
+    progressText.innerHTML = 'Question' + ' '  + questionCounter + '/' + MAX_QUESTIONS;
 
     let largura = (questionCounter / MAX_QUESTIONS) *100;
     //aqui altera o progress bar, calcula o espaço de acordo com a quantidade de questões
@@ -80,6 +88,8 @@ getNewQuestion = ( ) => {
     availableQuestions.splice(questionIndex,1);
 
     acceptingAnswers = true;
+
+    
 };
 
     choices.forEach(choice =>{
